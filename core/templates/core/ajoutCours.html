@@ -1,0 +1,111 @@
+{% extends "core/base.html"%}
+
+{% load static %}
+
+{% block title %}Inscription Parent/Elève{% endblock %}
+
+{% block content %} 
+    
+
+<section class="py-5">
+    <div class="py-5">
+        <div class="container border border-light rounded bg-white shadow-lg">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="pb-lg-4 pt-lg-3">
+                        <h1 class="text-center">Ajout d'un nouveau cours</h1>
+                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing, elit</p>
+                    </div>
+                    <div class="pb-lg-4 pt-lg-3">
+                        <form method="POST" action="#" class="px-3">
+                            {% csrf_token %}
+                            
+                            <div class="col-lg-7">
+                                <div class="form-group">
+                                    <label>Enseignant&emsp;</label>
+                                    {{cours_form.repetiteur}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Matière&emsp;</label>
+                                    {{cours_form.matiere}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Classe&emsp;</label>
+                                    {{cours_form.classe}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Jours&emsp;</label>
+                                    {{cours_form.jour}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Début du cours&emsp;</label>
+                                    {{cours_form.heure_début}}
+                                </div>
+                                <div class="form-group">
+                                    <label >Durée&emsp;</label>
+                                    {{cours_form.duree}}
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                {{err}}
+                                <div class="d-flex justify-content-center my-5">
+                                    <input class="border border-white rounded-pill py-2 px-3 text-black" type="submit" value="Ajouter" style="background-color: orange;">
+                                </div>
+                            </div>
+                           
+                        </form>
+                    </div>
+
+                    <div class="card card-body" style="background-color: #ebeff5;">
+                        <span class="btn btn-primary  btn-sm btn-block">Votre liste de Cours</span>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-hover">
+                                <tr>
+                                    <th>Matière</th>
+                                    <th>Classe</th>
+                                    <th>Jour</th>
+                                    <th>Début</th>
+                                    <th>Durée</th>
+                                    <th>Mise à Jour</th>
+                                    <th>Supprimer</th>
+                                </tr>
+
+                                {% for cours in coursList %}
+                                    {% if user.id == cours.repetiteur.user.id %}
+                                        <tr>
+                                            <th>{{cours.matiere}}</th>
+                                            <th>{{cours.classe}}</th>
+                                            <th>{{cours.jour}}</th>
+                                            <th>{{cours.heure_début}}</th>
+                                            <th>{{cours.duree}}</th>
+                                            <th><a href="">Mettre à Jour</a></th>
+                                            <th><a href="">Supprimer</a></th>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="d-flex justify-content-center">
+                        <figure><img class="img-fluid" src="{% static 'core/images/signup-image.jpg' %}" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var form_fields = document.getElementsByTagName('select')
+
+    for (var field in form_fields){
+        form_fields[field].className += ' form-control'
+    }
+
+</script>
+
+{% endblock %}

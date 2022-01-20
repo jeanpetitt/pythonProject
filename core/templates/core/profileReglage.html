@@ -1,0 +1,65 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %} Connexion Professeur{% endblock %}
+
+{% block content %}
+
+
+        
+ <div class="container-fluid rounded bg-white mt-5 ">
+    <div class="row">
+        <div class="col-lg-3 border-right shadow-lg rounded">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{% static 'core/img/profile.jpg' %}"><span class="font-weight-bold">Stone</span><span class="text-black-50">stoneboy@mail.com.my </span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{% static 'core/img/reglage.jpg' %}"><span class="font-weight-bold"></div>
+
+        </div>
+        <div class="col-lg-9 border-right rounded">
+            <div class="p-5 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Réglages profile</h4>
+
+                    <br>
+                    <hr
+                    
+           class="align-content-center mx-auto"
+           style="width: 100px; height: 4px; background:linear-gradient(to right, orangered, yellow);"
+           />
+                </div>
+
+                
+                <div class="row mt-2">
+                    
+                    <div class="col-md-6"><label class="labels">Nom</label><input type="text" class="form-control" placeholder="nom" value=""></div>
+                    <div class="col-md-6"><label class="labels">Prénom</label><input type="text" class="form-control" value="" placeholder="prenom"></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Numero tel</label><input type="text" class="form-control" placeholder="tel" value=""></div>
+                    <div class="col-md-6"><label class="labels">niveau d'étude</label><input type="text" class="form-control" placeholder="niveau" value=""></div>
+                    <div class="col-md-6"><label class="labels">date de naissance</label><input type="text" class="form-control" placeholder="ex 28/03/2001" value=""></div>
+                    <div class="col-md-6"><label class="labels">Ville</label><input type="text" class="form-control" placeholder="ville" value=""></div>
+                    <div class="col-md-6"><label class="labels">Email</label><input type="text" class="form-control" placeholder="email" value=""></div>
+                    <div class="col-md-6"><label class="labels">mot de passe</label><input type="password" class="form-control" placeholder="mot de passe" value=""></div>
+                    <div class="col-md-6"><label class="labels">Matières</label><select  class="form-control" placeholder="matière" value="">
+                        <option></option></select>
+                    </div>
+                    <div class="col-md-6"><label class="labels">Classes</label><select  class="form-control" placeholder="classe" value="">
+                        <option></option></select>
+                    </div>
+                    <div class="col-md-6"><label class="labels">Jours</label><select  class="form-control" placeholder="jours" value="">
+                        <option></option></select>
+                    </div>
+                    <div class="col-md-6"><label class="labels">Horaires</label><select  class="form-control" placeholder="horaire" value="">
+                        <option></option></select>
+                    </div>
+
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Sauvegarder profile</button></div>
+            </div>
+        </div>
+
+</div>
+</div>
+</div>
+{% endblock%}
+                                

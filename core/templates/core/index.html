@@ -1,0 +1,26 @@
+{% extends "core/base.html"%}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %} 
+
+<section id="hero" class="img-fluid bg-secondary" style="background-image:url(static/core/img/acceuil.jpg); background-attachment: fixed; background-repeat:no-repeat; background-size: cover;">
+
+
+    <div class="hero-container">
+      <h1 class="text-center">Améliorez votre niveau avec nos <br> <span>professeurs en ligne</span></h1>
+      <h1 class="text-center"></h1>
+      <p class="text-center text-white">Demarrez FindRepeater peut vous aider à trouver la solution pour vos cours en ligne via notre<br> <span>équipe de professeur expérimenté</span></p>
+      <a href="{% url 'inscriptionClient' %}" class="btn-get-started">Commencer</a>
+    </div>
+  </section>
+  <section class="bg-warning">
+      <div class="text-center">
+          <h1 class="text-white">Nous sommes ce dont vous avez besoin</h1>
+      </div>
+      <div class="text-center text-white"><p>Nous vous facilitons le conctact avec des professeurs expérimentés disponible pour vous encadrer en fonction de vos besoins</p></div>
+  </section>
+
+{% endblock %}

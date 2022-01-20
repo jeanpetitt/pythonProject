@@ -1,0 +1,53 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Connexion Client {% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="py-lg-5">
+    <div class="container">
+   <div class="row">
+    <div class=" col-lg-6 offset-3 border border-light rounded bg-white shadow-lg">
+      <form action="#" method="post">
+       <div class="py-2">
+         <h1 class="fw-fold text-center">Connexion</h1>
+       </div>
+       <hr class="align-content-center mx-auto"
+       style="width: 120px; height: 6px; background:linear-gradient(to right, orangered, yellow);">
+
+         {% csrf_token %}
+
+       <div class="py-lg-2">
+         <label for="username">Nom d'utilisateur</label>
+         <input class="form-control" type="text" name="username" id="username" placeholder="votre nom d'utilisateur" required="">
+       </div>
+
+       <div class="py-lg-3">
+         <label for="password">Mot de passe</label>
+         <input class="form-control" type="password" name="password" id="password" placeholder="votre mot de passe" required="">
+       </div>
+
+       {% for message in messages %}
+        <p class="text-center text-danger">{{message}}</p>
+      {% endfor %}
+
+        <div class="d-flex justify-content-center my-5">
+          {% if user.is_authenticated %}
+            <p class="text-center text-success">
+              Vous êtes déja connecté en tant que <b>{{request.user.username}}</b><br>
+              <a href="{% url 'user_logout' %}"> Se déconnecter ?</a>
+            </p>
+          {% endif %}
+          {% if not user.is_authenticated %}
+            <input class="border border-white rounded-pill py-2 px-4 text-black" type="submit" value="connexion" style="background-color: orange;">
+          {% endif %}
+        </div>
+
+      </form>
+      <p class="text-center">Vous n'avez pas de compte ? <a href="{% url 'inscriptionprof' %}">S'inscrire</a></p>
+   </div>
+ </div>
+  </div>
+  </div>
+</section>
+{% endblock%}

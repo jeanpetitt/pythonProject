@@ -1,0 +1,38 @@
+{% extends "core/base.html"%}
+
+{% load static %}
+
+{% block title %}Trouver un professeur{% endblock %}
+
+{% block content %} 
+
+<section class="py-5">
+    <div class="py-5">
+        <div class="container border border-light rounded bg-white shadow-lg">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="pb-lg-4 pt-lg-3">
+                        <h1 class="text-center">Resultat des recherches</h1>
+                        <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing, elit</p>
+                    </div>
+                    {% if not listCours %}
+                        <p>
+                            Aucun enseignent trouvé, 
+                            <a class="nav-link" href="{% url 'recherche' %}">Réessayer ?</a>
+                        </p>
+                    {% endif %}
+
+                    {% if listCours %}
+                        {% for cours in listCours %}
+                            {{cours.repetiteur.civilité}} {{cours.repetiteur.user.first_name}} {{cours.repetiteur.user.last_name}} {{cours.matiere}} {{cours.classe}} {{cours.repetiteur.ville}} {{cours.jour}} {{cours.heure_début}}
+                            <a href="{% url 'profil' %}">Voir profil</a>
+                            <br> 
+                        {% endfor %}
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>    
+{% endblock %}

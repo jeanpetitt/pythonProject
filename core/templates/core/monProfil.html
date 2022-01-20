@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %} Profil enseignant {% endblock %}
+
+{% block content %}
+
+<section class="py-5">
+    <div class="py-5">
+        <div class="py-2">
+            <h1 class="fw-fold text-center">Mon Profil</h1>
+          </div>
+          <hr class="align-content-center mx-auto"
+          style="width: 120px; height: 6px; background:linear-gradient(to right, orangered, yellow);">
+        </div> 
+    </div>
+    <div class="container">
+        {% for rep in repList %}
+            {% if rep.user.id == user.id %}
+                <p>civilite : {{rep.civilité}}</p>
+                <p>nom : {{rep.user.last_name}}</p>
+                <p>prenom : {{rep.user.first_name}}</p>
+                <p>âge : {{rep.age}}</p>
+                <p>téléphone : {{rep.telephone}}</p>
+                <p>addresse mail : {{rep.user.email}}</p>
+                <p>niveau d'étude : {{rep.niveauEtude}}</p>
+                <p>ville : {{rep.ville}}</p>
+                <p>quartier : {{rep.quartier}}</p>
+            {% endif %}
+        {% endfor %}
+
+        <div class="card card-body" style="background-color: #ebeff5; padding: 15px 20px;">
+            <span class="text-center" style="font-size: 25px; font-weight: bold; padding-bottom: 10px;">
+                Votre liste de cours
+            </span>
+            <style>
+                th{border-right: orange solid 1px;}
+            </style>
+            <div class="table-responsive text-center">
+                <table class="table table-sm table-hover">
+                    <tr style="border-bottom: orange solid 3px;">
+                        <th>Matière</th>
+                        <th>Classe</th>
+                        <th>Jour</th>
+                        <th>Début</th>
+                        <th>Durée</th>
+                        <th>Ville</th>
+                        <th>Mettre à Jour</th>
+                        <th>Supprimer</th>
+                    </tr>
+
+                    {% for c in coursList %}
+                        {% if c.repetiteur.user.id == user.id %}
+                            <tr>
+                                <th>{{c.matiere}}</th>
+                                <th>{{c.classe}}</th>
+                                <th>{{c.jour}}</th>
+                                <th>{{c.heure_début}}</th>
+                                <th>{{c.duree}}</th>
+                                <th>{{c.repetiteur.ville}}</th>
+                                <th><a class="btn btn-sm btn-success" href="">Modifier</a></th>
+                                <th><a class="btn btn-sm btn-danger" href="">Supprimer</a></th>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <a class="text-center btn btn-warning" href="{% url 'profilReg' %}">Modifier mon profil</a>
+
+    </div>
+    
+
+</section>
+
+{% endblock %}

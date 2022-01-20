@@ -1,0 +1,164 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %} Profil enseignant {% endblock %}
+
+{% block content %}
+
+
+<br><br>
+<div class="container py-5">
+    <div class="team_container">
+        <div class="py-3">
+            <h1 class="fw-fold text-center">Notre équipe de professeurs disponibles</h1>
+            <hr
+           class="align-content-center mx-auto"
+           style="width: 120px; height: 6px; background:linear-gradient(to right, orangered, yellow); margin-bottom: 70px;"
+           />
+        </div>
+    <div class="row">
+        {% if not listCours %}
+            <div class="col-md-8 md-offset-2">
+                <p>
+                    Aucun enseignent trouvé,
+                    <a class="nav-link" href="{% url 'recherche' %}">Réessayer ?</a>
+                </p>
+            </div>
+
+        {% endif %}
+
+        {% if listCours %}
+            {% for cours in listCours %}
+                <div class="col-md-4">
+                    <div class="box-profile">
+                        <div class="cover-photo">
+                            <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+                        </div>
+                        <div class="profile-name">
+                            <span style="font-size: 15px;">
+                                <!-- <a href="{% url 'consulterProfil' cours.id %}">{{cours.id}}</a>  -->
+                                {{cours.repetiteur.civilité}}
+                            </span><br>
+                            {{cours.repetiteur.user.first_name}} {{cours.repetiteur.user.last_name}}
+                        </div>
+                        <p class="age">
+                            A {{cours.repetiteur.age}} ans, vit à
+                            <span style="font-size: 18px; color: orange;">{{cours.repetiteur.ville}}, {{cours.repetiteur.quartier}}</span>
+                        </p>
+                        <p>Enseigne en
+                            {% for cour in listC %}
+                                {{cour}},
+                            {% endfor %}
+                        </p>
+
+                        <!-- <button class="msg-btn">Contacter</button> -->
+                        <button class="follow-btn">
+                            <a href="{% url 'consulterProfil' cours.id %}">Voir profil</a>
+                        </button>
+                        <div>
+                            <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-youtube"></i>
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% comment %} <div class="col"><br><br><br><br>     <div class="box-profile">
+            <div class="cover-photo">
+                <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+            </div>
+            <div class="profile-name">Mr nom prenom</div>
+            <p class="age">Age : 20 ans</p>
+            <p class="ville">Ville, quartier</p>
+
+            <button class="msg-btn">Contacter</button>
+            <button class="follow-btn">profile </button>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+
+            </div>
+        </div></div>
+        <div class="col">  <br><br><br><br>   <div class="box-profile">
+            <div class="cover-photo">
+                <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+            </div>
+            <div class="profile-name">Mr nom prenom</div>
+            <p class="age"> Age : 20 ans</p>
+            <p class="ville">Ville, quartier</p>
+
+            <button class="msg-btn">Contacter</button>
+            <button class="follow-btn">profile </button>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+
+            </div>
+        </div></div>
+        <div class="col">    <div class="box-profile">
+            <div class="cover-photo">
+                <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+            </div>
+            <div class="profile-name">Mr nom prenom</div>
+            <p class="age">Age : 20 ans</p>
+            <p class="ville">Ville, quartier</p>
+
+            <button class="msg-btn">Contacter</button>
+            <button class="follow-btn">profile </button>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+
+            </div>
+        </div></div>
+        <div class="col">    <div class="box-profile">
+            <div class="cover-photo">
+                <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+            </div>
+            <div class="profile-name">Mr nom prenom</div>
+            <p class="age">Age : 20 ans</p>
+            <p class="ville">Ville, quartier</p>
+
+            <button class="msg-btn">Contacter</button>
+            <button class="follow-btn">profile </button>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+
+            </div>
+        </div></div>
+        <div class="col">    <div class="box-profile">
+            <div class="cover-photo">
+                <img src="{% static 'core/img/profile.jpg' %}" class="profile" alt="">
+            </div>
+            <div class="profile-name">Mr nom prenom</div>
+            <p class="age"> Age : 20 ans</p>
+            <p class="ville">Ville, quartier</p>
+            <button class="msg-btn">Contacter</button>
+            <button class="follow-btn">profile </button>
+            <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-twitter"></i>
+
+            </div>
+        </div></div> {% endcomment %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

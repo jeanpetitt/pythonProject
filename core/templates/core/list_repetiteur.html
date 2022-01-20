@@ -1,0 +1,60 @@
+{% extends "core/base.html"%}
+
+{% load static %}
+
+{% block title %}Liste des répétiteurs{% endblock %}
+
+{% block content %} 
+    
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+        
+            <div class="col-md-10 offset-1">
+                <h5>Listes de tous les profs profs</h5>
+                <hr>
+                <div class="card card-body">
+                    <a class="btn btn-primary  btn-sm btn-block" href="">Ajouter une Commande</a>
+                    <table class="table table-lg">
+                        <tr>
+                            <th>ID</th>
+                            <th>Civilité</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Catégorie</th>
+                            <th>Âge</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <!-- <th>Email</th>
+                            <th>Niveau</th>
+                            <th>Ville</th>
+                            <th>Quartier</th>
+                            <th>Cours</th> -->
+                            <th>Mise à Jour</th>
+                            <th>Supprimer</th>
+                        </tr>
+                        
+                        {% for client in clients %}
+                            <tr>
+                                <th>{{client.id}}</th>
+                                <th>{{client.civilité}}</th>
+                                <th>{{client.user.last_name}}</th>
+                                <th>{{client.user.first_name}}</th>
+                                <th>{{client.type_user}}</th>
+                                <th>{{client.age}}</th>
+                                <th>{{client.telephone}}</th>
+                                <th>{{client.user.email}}</th>
+                                <th><a href="">Mettre à Jour</a></th>
+                                <th><a href="">Supprimer</a></th>
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</section>
+
+{% endblock %}
